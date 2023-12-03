@@ -1,7 +1,9 @@
 icon: https://upload.wikimedia.org/wikipedia/commons/9/9e/UbuntuCoF.svg
 deploy:
-  - okteto stack deploy --build -f kde/okteto-pipeline.yml
-  - okteto stack deploy --build -f xfce/okteto-pipeline.yml
-#devs:
-#  - kde/okteto-pipeline.yml
-#  - xfce/okteto-pipeline.yml
+  - okteto stack deploy --build -f kde/docker-compose.yml
+  - okteto stack deploy --build -f xfce/docker-compose.yml
+  - okteto stack deploy --build -f mate/docker-compose.yml
+devs:
+  - kde/docker-compose.yml
+  - xfce/docker-compose.yml
+  - mate/docker-compose.yml
