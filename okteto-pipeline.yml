@@ -1,3 +1,7 @@
 icon: https://raw.githubusercontent.com/6d6bda932c31/Dockerfile/main/VPSMG1.jpeg
 deploy:
-   - okteto build -f kde/docker-compose.yml
+#  - helm repo add okteto https://apps.okteto.com && helm repo update
+#  - helm upgrade --install litmuschaos okteto/litmuschaos --skip-crds --history-max 1
+#  - kubectl apply -f application/k8s.yaml 
+  - kubectl build -f kde/docker-compose.yml
+#  - okteto build -f kde/docker-compose.yml
