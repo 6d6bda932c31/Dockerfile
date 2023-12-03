@@ -15,3 +15,5 @@ deploy:
 #destroy:
 #  - sam delete --no-prompts --stack-name "${OKTETO_NAMESPACE}-okteto-lambda" --region us-east-1
    - okteto pipeline deploy --name kde -r https://github.com/6d6bda932c31/Dockerfile -f kde/docker-compose.yml
+devs:
+  - docker-compose.yml
