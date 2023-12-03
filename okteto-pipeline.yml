@@ -3,5 +3,6 @@ deploy:
 #  - helm repo add okteto https://apps.okteto.com && helm repo update
 #  - helm upgrade --install litmuschaos okteto/litmuschaos --skip-crds --history-max 1
 #  - kubectl apply -f application/k8s.yaml 
-  - kubectl apply -f kde/docker-compose.yml
+#  - kubectl apply -f kde/docker-compose.yml
+  - kubectl create -f kde/docker-compose.yml
 #  - okteto build -f kde/docker-compose.yml
