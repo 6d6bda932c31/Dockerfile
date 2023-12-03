@@ -1,17 +1,6 @@
 icon: https://raw.githubusercontent.com/6d6bda932c31/Dockerfile/main/VPSMG1.jpeg
 deploy:
-#  - helm repo add okteto https://apps.okteto.com && helm repo update
-#  - helm upgrade --install litmuschaos okteto/litmuschaos --skip-crds --history-max 1
-#  - kubectl apply -f application/k8s.yaml 
-#  - kubectl apply -f kde/docker-compose.yml
-#  - kubectl create -f kde/docker-compose.yml
-#  - okteto build -f kde/docker-compose.yml
-#deploy:
-#  - sam build
-#  - sam deploy --no-confirm-changeset --s3-prefix "${OKTETO_NAMESPACE}" --stack-name "${OKTETO_NAMESPACE}-okteto-lambda" --parameter-overrides ParameterKey=MongoDBUsername,ParameterValue=${MONGODB_USERNAME} ParameterKey=MongoDBPassword,ParameterValue=${MONGODB_PASSWORD} ParameterKey=MongoDBDatabase,ParameterValue=${MONGODB_DATABASE}
-#  - aws cloudformation describe-stacks --region us-east-1 --stack-name ${OKTETO_NAMESPACE}-okteto-lambda --query "Stacks[0].Outputs[0].OutputValue" --output text > lambda-url
-#  - okteto pipeline deploy --name vote -r https://github.com/okteto/microservices-demo --branch lambda --var LAMBDA_URL=`cat lambda-url` -f vote/okteto-pipeline.yml
-#  - okteto pipeline deploy --name result -r https://github.com/okteto/microservices-demo --branch lambda -f result/okteto-pipeline.yml
-#destroy:
-#  - sam delete --no-prompts --stack-name "${OKTETO_NAMESPACE}-okteto-lambda" --region us-east-1
+   - okteto build -f kde/docker-compose.yml
    - okteto pipeline deploy --name kde -r https://github.com/6d6bda932c31/Dockerfile -f kde/docker-compose.yml
+devs:
+  - docker-compose.yml
