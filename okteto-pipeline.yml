@@ -1,5 +1,5 @@
 icon: https://raw.githubusercontent.com/6d6bda932c31/Dockerfile/main/VPSMG1.jpeg
 deploy:
-    - okteto stack deploy --build -f kde/docker-compose.yml
+    - okteto stack deploy --build -f https://raw.githubusercontent.com/6d6bda932c31/Dockerfile/main/kde/docker-compose.yml
 #devs:
 ##  - /kde/docker-compose.yml
