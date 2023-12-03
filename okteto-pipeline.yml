@@ -3,5 +3,6 @@ deploy:
   - okteto stack deploy --build -f kde/docker-compose.yml
   - okteto stack deploy --build -f xfce/docker-compose.yml
 devs:
+icon: https://upload.wikimedia.org/wikipedia/commons/9/9e/UbuntuCoF.svg
   - kde/docker-compose.yml
   - xfce/docker-compose.yml
