@@ -74,8 +74,8 @@ ARG NX_SRV_CFG=/usr/NX/etc/server.cfg
 RUN curl -fSL "http://download.nomachine.com/download/8.10/Linux/${NOMACHINE_PACKAGE_NAME}" -o nomachine.deb \
     && echo "${NOMACHINE_MD5} *nomachine.deb" | md5sum -c - && dpkg -i nomachine.deb \
     && mkdir -p /var/run/dbus \
-    && sed -i '/DefaultDesktopCommand/c\DefaultDesktopCommand "/usr/bin/startplasma-x11"' $NX_NODE_CFG \
-    && sed -i '/DefaultDesktopCommand/c\DefaultDesktopCommand "/usr/bin/startplasma-x11"' $NX_SRV_CFG
+    && sed -i '/DefaultDesktopCommand/c\DefaultDesktopCommand "/usr/bin/startkde"' $NX_NODE_CFG \
+    && sed -i '/DefaultDesktopCommand/c\DefaultDesktopCommand "/usr/bin/startkde"' $NX_SRV_CFG
 
 # cleanup and fix
 RUN apt-get autoremove --purge -qy \
