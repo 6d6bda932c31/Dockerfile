@@ -1,4 +1,4 @@
-icon: https://raw.githubusercontent.com/314257smcag2/VPSMG1/main/VPSMG1.jpeg
+icon: https://upload.wikimedia.org/wikipedia/commons/0/07/Ubuntu_MATE_rondel_logo.svg
 deploy:
   - okteto stack deploy --build -f docker-compose.yml
 devs:
