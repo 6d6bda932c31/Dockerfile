@@ -30,7 +30,7 @@ RUN apt-add-repository --yes -s ppa:mozillateam/ppa \
     && echo '\nPackage: *\nPin: release o=LP-PPA-mozillateam\nPin-Priority: 1001' | tee /etc/apt/preferences.d/mozilla-firefox \
     && echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox \
     && apt-get update -qy \
-    && apt-get install firefox -y
+    && apt-get install firefox -y --allow-downgrades
 
 # Install node
 ARG NODE_VERSION=20
