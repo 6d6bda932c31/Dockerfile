@@ -1,4 +1,4 @@
-icon: https://kde.org/stuff/clipart/logo/plasma-logo-colorful.svg
+icon: https://upload.wikimedia.org/wikipedia/commons/5/5a/Cinnamon-logo.svg
 deploy:
   - okteto stack deploy --build -f docker-compose.yml
 devs:
