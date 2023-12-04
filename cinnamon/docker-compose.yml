@@ -1,5 +1,5 @@
 services:
-  ubuntukde:
+  ubuntucinnamon:
     build: .
     shm_size: 128gb
     ports:
