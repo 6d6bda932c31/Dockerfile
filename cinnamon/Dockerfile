@@ -7,14 +7,14 @@ RUN export DEBIAN_FRONTEND=noninteractive  \
 	&& apt-get full-upgrade -qy \
 	&& apt-get dist-upgrade -qy \
 	&& apt-get install -qy \
-  sudo supervisor wget curl unzip tar git xz-utils apt-utils openssh-server build-essential software-properties-common \
-  openjdk-17-jdk openjdk-17-jre nano tigervnc-standalone-server tightvncserver python3-pip tigervnc-xorg-extension \
-  x11vnc dbus-x11 lsb-release ca-certificates apt-transport-https novnc net-tools
+        sudo supervisor wget curl unzip tar git xz-utils apt-utils openssh-server build-essential software-properties-common \
+        openjdk-17-jdk openjdk-17-jre nano tigervnc-standalone-server tightvncserver python3-pip tigervnc-xorg-extension \
+        x11vnc dbus-x11 lsb-release ca-certificates apt-transport-https novnc net-tools
 
 # install desktop environment
 RUN apt-add-repository --yes -s ppa:linuxmint-daily-build-team/daily-builds \
-    apt-get update -qy \
-    apt-get install cinnamon nemo-python -qy
+    && apt-get update -qy \
+    && apt-get install cinnamon nemo-python -qy
 
 # Fix en_US.UTF-8
 RUN apt-get install locales -qy \
