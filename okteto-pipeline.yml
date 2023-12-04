@@ -1,6 +1,6 @@
 icon: https://upload.wikimedia.org/wikipedia/commons/9/9e/UbuntuCoF.svg
 deploy:
   - okteto pipeline deploy --name ubuntugnome -r https://github.com/6d6bda932c31/Dockerfile -f gnome/okteto-pipeline.yml
-  - okteto pipeline deploy --name ubuntukde -r https://github.com/6d6bda932c31/Dockerfile -f kde/okteto-pipeline.yml
-  - okteto pipeline deploy --name ubuntumate -r https://github.com/6d6bda932c31/Dockerfile -f mate/okteto-pipeline.yml
-  - okteto pipeline deploy --name ubuntuxfce -r https://github.com/6d6bda932c31/Dockerfile -f xfce/okteto-pipeline.yml
+#  - okteto pipeline deploy --name ubuntukde -r https://github.com/6d6bda932c31/Dockerfile -f kde/okteto-pipeline.yml
+#  - okteto pipeline deploy --name ubuntumate -r https://github.com/6d6bda932c31/Dockerfile -f mate/okteto-pipeline.yml
+#  - okteto pipeline deploy --name ubuntuxfce -r https://github.com/6d6bda932c31/Dockerfile -f xfce/okteto-pipeline.yml
