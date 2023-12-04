@@ -40,7 +40,7 @@ RUN wget -O - https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash \
     
 # Install tor
 RUN wget -O- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | apt-key add - \
-    && apt-add-repository --yes -s https://deb.torproject.org/torproject.org \
+    && apt-add-repository -y -s https://deb.torproject.org/torproject.org \
     && apt-get update \
     && apt-get install tor deb.torproject.org-keyring torsocks -y \
     && sed -i 's\#SocksPort 9050\SocksPort 9058\ ' /etc/tor/torrc \
