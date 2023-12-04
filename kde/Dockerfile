@@ -90,6 +90,10 @@ RUN useradd -m -s /bin/bash ${USER} \
     && echo "${USER}:${PASSWORD}" | chpasswd \
     && echo "${USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+# command nomachine
+ADD nxserver.sh /home/${USER}/nxserver.sh
+RUN chmod +x /home/${USER}/nxserver.sh
+
 # TZ, aliases
 ENV TZ=Etc/UTC
 RUN cd /home/${USER} \
@@ -100,10 +104,6 @@ RUN cd /home/${USER} \
 RUN chown -R ${USER}:${USER} /home/${USER}/.*
 USER ${USER}
 WORKDIR /home/${USER}
-
-# command nomachine
-ADD nxserver.sh /home/${USER}/nxserver.sh
-RUN chmod +x /home/${USER}/nxserver.sh
 
 # ports
 EXPOSE 6080 5900 4000
