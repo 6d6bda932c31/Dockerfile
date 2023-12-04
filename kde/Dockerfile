@@ -98,6 +98,7 @@ RUN cd /home/${USER} \
 
 # set owner
 RUN chown -R ${USER}:${USER} /home/${USER}/.*
+USER ${USER}
 WORKDIR /home/${USER}
 
 # command nomachine
@@ -110,4 +111,4 @@ EXPOSE 6080 5900 4000
 # default command
 #ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 #CMD ["/usr/bin/supervisord","-n","-c","/etc/supervisor/supervisord.conf"]
-CMD /usr/bin/Xvnc :0 -SecurityTypes none -AlwaysShared & /usr/share/novnc/utils/launch.sh --listen 6080 & /usr/bin/startplasma-x11
+CMD Xvnc :0 -SecurityTypes none -AlwaysShared & /usr/share/novnc/utils/launch.sh --listen 6080 & startplasma-x11
