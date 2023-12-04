@@ -1,0 +1,5 @@
+icon: https://kde.org/stuff/clipart/logo/plasma-logo-colorful.svg
+deploy:
+  - okteto stack deploy --build -f docker-compose.yml
+devs:
+  - docker-compose.yml
