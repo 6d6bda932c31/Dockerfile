@@ -1,4 +1,4 @@
-icon: https://kde.org/stuff/clipart/logo/plasma-logo-colorful.svg
+icon: https://upload.wikimedia.org/wikipedia/commons/f/fb/Ubuntu_GNOME_roundel.svg
 deploy:
   - okteto stack deploy --build -f docker-compose.yml
 devs:
