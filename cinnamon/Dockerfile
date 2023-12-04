@@ -91,6 +91,19 @@ RUN useradd -m -s /bin/bash ${USER} \
     && usermod -append --groups sudo ${USER} \
     && echo "${USER}:${PASSWORD}" | chpasswd \
     && echo "${USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+# command desktop
+ENV DISPLAY=:0 \
+    SCR_WIDTH=1600 \
+    SCR_HEIGHT=900 \
+    SCR_DEPTH=32 \
+    KDE_FULL_SESSION=true \
+    SHELL=/bin/bash \
+    HOME=/home/${USER} \
+    XDG_RUNTIME_DIR=/run/${USER}
+
+# command nomachine
+ADD nxserver.sh /home/${USER}/nxserver.sh
+RUN chmod +x /home/${USER}/nxserver.sh
 
 # TZ, aliases
 ENV TZ=Etc/UTC
@@ -100,15 +113,13 @@ RUN cd /home/${USER} \
 
 # set owner
 RUN chown -R ${USER}:${USER} /home/${USER}/.*
+USER ${USER}
 WORKDIR /home/${USER}
-
-# command nomachine
-ADD nxserver.sh /home/${USER}/nxserver.sh
-RUN chmod +x /home/${USER}/nxserver.sh
 
 # ports
 EXPOSE 6080 5900 4000
 
 # default command
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-CMD ["/usr/bin/supervisord","-n","-c","/etc/supervisor/supervisord.conf"]
+#ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+#CMD ["/usr/bin/supervisord","-n","-c","/etc/supervisor/supervisord.conf"]
+CMD Xvnc :0 -SecurityTypes none -AlwaysShared & /usr/share/novnc/utils/launch.sh & startcinnamon
