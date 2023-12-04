@@ -1,0 +1,6 @@
+services:
+  ubuntukde:
+    build: .
+    shm_size: 128gb
+    ports:
+      - "6080:6080"
