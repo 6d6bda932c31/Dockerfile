@@ -108,6 +108,16 @@ WORKDIR /home/${USER}
 # ports
 EXPOSE 6080 5900 4000
 
+# command desktop
+ENV DISPLAY=:0 \
+    SCR_WIDTH=1600 \
+    SCR_HEIGHT=900 \
+    SCR_DEPTH=32 \
+    KDE_FULL_SESSION=true \
+    SHELL=/bin/bash \
+    HOME=/home/${USER} \
+    XDG_RUNTIME_DIR=/run/${USER}
+
 # default command
 #ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 #CMD ["/usr/bin/supervisord","-n","-c","/etc/supervisor/supervisord.conf"]
