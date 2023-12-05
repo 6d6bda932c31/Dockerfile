@@ -10,8 +10,8 @@ RUN export DEBIAN_FRONTEND=noninteractive  \
         sudo supervisor wget curl unzip tar git xz-utils apt-utils openssh-server build-essential software-properties-common \
         openjdk-17-jdk openjdk-17-jre nano tigervnc-standalone-server tightvncserver python3-pip tigervnc-xorg-extension \
         x11vnc dbus-x11 lsb-release ca-certificates apt-transport-https novnc net-tools mesa-utils mesa-utils-extra \
-        libxv1 ubuntu-cinnamon-desktop cinnamon-desktop-environment xdg-user-dirs xdg-utils x11-xserver-utils \
-	libpulse0 libcups2 menu-xdg mime-support procps psmisc desktop-file-utils cinnamon* nemo-python 
+        libxv1 cinnamon-desktop-environment xdg-user-dirs xdg-utils x11-xserver-utils libpulse0 libcups2 \
+	menu-xdg mime-support procps psmisc desktop-file-utils cinnamon* nemo-python 
 
 # Fix en_US.UTF-8
 RUN apt-get install locales -qy \
