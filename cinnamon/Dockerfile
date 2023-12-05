@@ -33,7 +33,7 @@ RUN echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sou
 #    && echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox \
 #    && apt-get update -qy \
 #    && apt-get install firefox -y
-RUN wget https://download-installer.cdn.mozilla.net/pub/firefox/releases/120.0.1/linux-i686/en-US/firefox-120.0.1.tar.bz2 \
+RUN wget https://download-installer.cdn.mozilla.net/pub/firefox/releases/120.0.1/linux-x86_64/en-US/firefox-120.0.1.tar.bz2 \
     && tar xjvf firefox-*.tar.bz2 -C /opt/ \
     && ln -s /opt/firefox/firefox /usr/local/bin/firefox \
     && wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
