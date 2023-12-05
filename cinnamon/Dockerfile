@@ -10,7 +10,7 @@ RUN export DEBIAN_FRONTEND=noninteractive  \
         sudo supervisor wget curl unzip tar git xz-utils apt-utils openssh-server build-essential software-properties-common \
         openjdk-17-jdk openjdk-17-jre nano tigervnc-standalone-server tightvncserver python3-pip tigervnc-xorg-extension \
         x11vnc dbus-x11 lsb-release ca-certificates apt-transport-https novnc net-tools cinnamon* nemo-python \
-	&& apt-add-repository --yes -s ppa:linuxmint-daily-build-team/daily-builds \
+	&& apt-add-repository --yes ppa:linuxmint-daily-build-team/daily-builds \
         && apt-get full-upgrade -qy
 
 # Fix en_US.UTF-8
@@ -28,7 +28,7 @@ RUN echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sou
     && rm -rf /etc/apt/sources.list.d/chrome.list
 
 # Install firefox
-RUN apt-add-repository --yes -s ppa:mozillateam/ppa \
+RUN apt-add-repository --yes ppa:mozillateam/ppa \
     && echo '\nPackage: *\nPin: release o=LP-PPA-mozillateam\nPin-Priority: 1001' | tee /etc/apt/preferences.d/mozilla-firefox \
     && echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox \
     && apt-get update -qy \
