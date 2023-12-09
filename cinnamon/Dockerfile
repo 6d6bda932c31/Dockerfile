@@ -43,7 +43,7 @@ ENV DISPLAY=:1 \
     HOME=/home/${USER} \
     XDG_RUNTIME_DIR=/run/${USER}
 
-EXPOSE 6080 3389 5900
+EXPOSE 6080 3389 5901
 
 #CMD service dbus start && /usr/lib/systemd/systemd-logind & service xrdp start && /startvnc && /usr/share/novnc/utils/launch.sh --listen 6080 --vnc localhost:5902 && bash
 CMD Xvnc :1 -AlwaysShared & /usr/share/novnc/utils/launch.sh  --listen 6080 --vnc localhost:5901 & cinnamon
