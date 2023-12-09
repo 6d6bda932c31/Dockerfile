@@ -39,7 +39,6 @@ ENV DISPLAY=:1 \
     SCR_WIDTH=1600 \
     SCR_HEIGHT=900 \
     SCR_DEPTH=32 \
-    KDE_FULL_SESSION=true \
     SHELL=/bin/bash \
     HOME=/home/${USER} \
     XDG_RUNTIME_DIR=/run/${USER}
