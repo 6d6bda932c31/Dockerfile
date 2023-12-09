@@ -46,4 +46,4 @@ ENV DISPLAY=:1 \
 EXPOSE 6080 3389 5901
 
 #CMD service dbus start && /usr/lib/systemd/systemd-logind & service xrdp start && /startvnc && /usr/share/novnc/utils/launch.sh --listen 6080 --vnc localhost:5902 && bash
-CMD Xvnc :1 -AlwaysShared & /usr/share/novnc/utils/launch.sh  --listen 6080 --vnc localhost:5901 & cinnamon
+CMD Xvnc :1 -SecurityTypes none -AlwaysShared & /usr/share/novnc/utils/launch.sh  --listen 6080 --vnc localhost:5901 & cinnamon
