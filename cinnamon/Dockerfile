@@ -1,5 +1,5 @@
 #FROM ubuntu:jammy
-FROM ubuntu:lunar
+FROM ubuntu:jammy
 
 # update and install software
 RUN export DEBIAN_FRONTEND=noninteractive  \
@@ -9,7 +9,7 @@ RUN export DEBIAN_FRONTEND=noninteractive  \
 	&& apt-get install -qy \
         sudo wget curl unzip tar git xz-utils apt-utils openssh-server build-essential software-properties-common \
         openjdk-17-jdk openjdk-17-jre nano tigervnc-standalone-server python3-pip novnc net-tools  \
-        x11vnc dbus-x11 lsb-release ca-certificates apt-transport-https kde* xrdp
+        x11vnc dbus-x11 lsb-release ca-certificates apt-transport-https cinnamon*
 
 # Fix en_US.UTF-8
 RUN apt-get install locales -qy \
@@ -28,24 +28,23 @@ RUN useradd -m $USER -p $(openssl passwd $PASSWORD) \
     && echo "${USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
     && chsh -s /bin/bash $USER
 
-# config xrdp
-RUN adduser xrdp ssl-cert \
-    && echo "#!/bin/sh\nexport XDG_SESSION_DESKTOP=kde\nexport XDG_SESSION_TYPE=x11\nexport XDG_CURRENT_DESKTOP=X-kde\nexport XDG_CONFIG_DIRS=/etc/xdg/xdg-kde:/etc/xdg" > /env \ 
-    && chmod 555 /env \
-    && echo "#!/bin/sh\n. /env\nexec dbus-run-session -- kde-session" > /xstartup \
-    && chmod +x /xstartup \
-    && cp -f /xstartup /etc/xrdp/startwm.sh
-
 # config vnc
 RUN mkdir /home/$USER/.vnc \
     && echo $PASSWORD | vncpasswd -f > /home/$USER/.vnc/passwd \
     && chmod 0600 /home/$USER/.vnc/passwd \
-    && chown -R $USER:$USER /home/$USER/.vnc \
-    && cp -f /xstartup /home/$USER/.vnc/xstartup \
-    && echo "#!/bin/sh\nsudo -u $USER -g $USER -- vncserver -rfbport 5902 -verbose -localhost no -autokill no" > /startvnc \
-    && chmod +x /startvnc
+    && chown -R $USER:$USER /home/$USER/.vnc
 
-EXPOSE 6080 3389 5902
+# command desktop
+ENV DISPLAY=:1 \
+    SCR_WIDTH=1600 \
+    SCR_HEIGHT=900 \
+    SCR_DEPTH=32 \
+    KDE_FULL_SESSION=true \
+    SHELL=/bin/bash \
+    HOME=/home/${USER} \
+    XDG_RUNTIME_DIR=/run/${USER}
+
+EXPOSE 6080 3389 5900
 
 #CMD service dbus start && /usr/lib/systemd/systemd-logind & service xrdp start && /startvnc && /usr/share/novnc/utils/launch.sh --listen 6080 --vnc localhost:5902 && bash
-CMD service dbus start && /usr/lib/systemd/systemd-logind & service xrdp start && /startvnc && /usr/share/novnc/utils/novnc_proxy --listen 6080 --vnc localhost:5902
+CMD Xvnc :1 -AlwaysShared & /usr/share/novnc/utils/launch.sh  --listen 6080 --vnc localhost:5901 & cinnamon
