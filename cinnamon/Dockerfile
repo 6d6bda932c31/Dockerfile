@@ -35,7 +35,7 @@ RUN useradd -m $USER -p $(openssl passwd $PASSWORD) \
 #    && chown -R $USER:$USER /home/$USER/.vnc
 
 # command desktop
-ENV DISPLAY=:1 \
+ENV DISPLAY=:0 \
     SCR_WIDTH=1600 \
     SCR_HEIGHT=900 \
     SCR_DEPTH=32 \
@@ -43,7 +43,7 @@ ENV DISPLAY=:1 \
     HOME=/home/${USER} \
     XDG_RUNTIME_DIR=/run/${USER}
 
-EXPOSE 6080 3389 5901
+EXPOSE 6080 3389 5900
 
 #CMD service dbus start && /usr/lib/systemd/systemd-logind & service xrdp start && /startvnc && /usr/share/novnc/utils/launch.sh --listen 6080 --vnc localhost:5902 && bash
-CMD Xvnc :1 -SecurityTypes none -AlwaysShared & /usr/share/novnc/utils/launch.sh  --listen 6080 --vnc localhost:5901 & cinnamon
+CMD Xvnc :0 -SecurityTypes none -AlwaysShared & /usr/share/novnc/utils/launch.sh  --listen 6080 --vnc localhost:5901 & cinnamon
